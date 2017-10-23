@@ -14,7 +14,7 @@
     </ol>
     <h3 data-bind="text: level"></h3>
     <div data-bind="text: clickCount" ></div>
-    <img src="" alt="cute cat" data-bind="click: $root.incrementCounter, attr: {src: imgSrc}">
+    <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
 
   </div>
 
