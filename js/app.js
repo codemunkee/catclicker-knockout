@@ -15,29 +15,37 @@ var Cat = function(data) {
     }, this);
 };
 
+var initialCats = [
+    {
+        name: 'Tabby',
+        imgSrc: 'img/cat1.jpeg',
+        imgAttribution: 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg',
+        nickNames: ['Billy', 'Barry', 'Bruce'],
+        clickCount: 0
+    },
+    {
+        name: 'Freddy',
+        imgSrc: 'img/cat2.jpeg',
+        imgAttribution: 'https://www.google.com',
+        nickNames: ['Sonny', 'Tina', 'Russell'],
+        clickCount: 0
+    }
+];
+
 var ViewModel = function() {
 
-    var initialCats = [
-        {
-            name: 'Tabby',
-            imgSrc: 'img/cat1.jpeg',
-            imgAttribution: 'https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg',
-            nickNames: ['Billy', 'Barry', 'Bruce'],
-            clickCount: 0
-        },
-        {
-            name: 'Freddy',
-            imgSrc: 'img/cat2.jpeg',
-            imgAttribution: 'https://www.google.com',
-            nickNames: ['Sonny', 'Tina', 'Russell'],
-            clickCount: 0
-        }
-    ];
+    var self = this;
 
-    this.currentCat = ko.observable( new Cat(initialCats[0]) );
+    this.catList = new ko.observableArray([]);
+
+    initialCats.forEach(function(catItem) {
+        self.catList.push(new Cat(catItem));
+    });
+
+    this.currentCat = ko.observable(this.catList()[0]);
 
     this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
+        self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
 
 };
