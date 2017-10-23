@@ -5,7 +5,7 @@ var Cat = function() {
     this.imgAttribution = ko.observable('https://static.pexels.com/photos/127028/pexels-photo-127028.jpeg');
     this.nickNames = ko.observableArray(['Billy', 'Barry', 'Bruce']);
 
-    var level = ko.computed(function() {
+    this.level = ko.computed(function() {
         if (this.clickCount() < 10) {
             return 'Baby';
         } else {
@@ -19,7 +19,7 @@ var ViewModel = function() {
     this.currentCat = ko.observable( new Cat() );
 
     this.incrementCounter = function() {
-        this.currentCat().clickCount(this.currentCat().clickCount() + 1);
+        this.clickCount(this.clickCount() + 1);
     };
 
 };
