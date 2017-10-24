@@ -32,10 +32,6 @@ var initialCats = [
     }
 ];
 
-// [ ] Make the cats show up in a list
-//
-// [ ] Make the currentCat change when you click on a cat in the list
-
 var ViewModel = function() {
 
     var self = this;
@@ -52,10 +48,10 @@ var ViewModel = function() {
         self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
 
-    self.setCurrentCat = function() {
-        console.log(self.currentCat());
-        self.currentCat = ko.observable(this);
-        console.log(self.currentCat());
+    self.setCurrentCat = function(cat) {
+        // notice that we set the current cat by passing it in (it's a
+        // variable wrapped in an observable function)
+        self.currentCat(cat);
     };
 
 };
